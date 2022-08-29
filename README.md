@@ -2,7 +2,7 @@
 GLOBER
 
 # アプリケーション概要
-海外在住もしくは海外在住予定のユーザー同士で質疑応答とSNS上でその先の繋がりを広げることができる
+海外在住もしくは海外在住予定のユーザー同士で情報交換とSNS上でその先の繋がりを広げることができる
 
 # URL
 
@@ -13,7 +13,7 @@ GLOBER
 - パスワード：
 
 # 利用方法
-## 目標投稿
+## 質問投稿
 
 # テーブル設計
 ## Userテーブル
@@ -24,15 +24,15 @@ GLOBER
 | nickname              | string        | null: false                        |
 
 
-## Questionテーブル
+## Questionsテーブル
 
-## Likeテーブル
+## Likesテーブル
 
-## TagMapテーブル
+## TagMapsテーブル
 
-## Answerテーブル
+## Answersテーブル
 
-## BestAnswerテーブル
+## BestAnswersテーブル
 
 ## CountryWantToStayテーブル
 
@@ -41,6 +41,12 @@ GLOBER
 ## CountryStayedテーブル
 
 ## CountryVisitedテーブル
+
+# データベース設計
+
+
+# 画面遷移図
+[![Image from Gyazo](https://i.gyazo.com/9377f8b8384a59a5707a9380795e2dfe.png)](https://gyazo.com/9377f8b8384a59a5707a9380795e2dfe)
 
 
 
