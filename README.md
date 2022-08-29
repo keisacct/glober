@@ -15,6 +15,11 @@ GLOBER
 # 利用方法
 ## 質問投稿
 
+# アプリケーションを作成した背景
+
+# 洗い出した要件
+https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF6tc/edit?usp=sharing
+
 # テーブル設計
 ## Userテーブル
 | Column                | Type          | Options                            |
@@ -48,6 +53,8 @@ GLOBER
 # 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/9377f8b8384a59a5707a9380795e2dfe.png)](https://gyazo.com/9377f8b8384a59a5707a9380795e2dfe)
 
+# 開発環境
 
+# ローカルでの動作方法
 
-continue...
+# 工夫したポイント
