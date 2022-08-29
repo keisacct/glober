@@ -160,7 +160,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 
 
 # 画面遷移図
-[![Image from Gyazo](https://i.gyazo.com/9377f8b8384a59a5707a9380795e2dfe.png)](https://gyazo.com/9377f8b8384a59a5707a9380795e2dfe)
+[![Image from Gyazo](https://i.gyazo.com/0fc4e3fbb151c0e95ff34dfc4199462a.png)](https://gyazo.com/0fc4e3fbb151c0e95ff34dfc4199462a)
 
 # 開発環境
 
