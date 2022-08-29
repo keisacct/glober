@@ -48,7 +48,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | linkedin_url          | varchar       |                                        |
 | facebook_url          | varchar       |                                        |
 | blog_url              | varchar       |                                        | 
-| stayed_countries      | integer       |                                        |
+| stayed_countries      | references    | foreign_key: true                      |
 
 ### Associations
 - belongs_to :user
@@ -57,6 +57,45 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 - has_many :wannastay_countries, dependent: destroy
 - has_many :wannavisit_countries, dependent, destroy
 
+## stayed_countriesテーブル
+| Column                | Type          | Options                                |
+| --------------------- | ------------- | -------------------------------------- |
+| profile               | references    | null: false, foreign_key: true         |
+| country_id            | integer       |                                        |
+
+### Associations
+- belongs_to :profile
+- belongs_to  :country
+
+## visited_countriesテーブル
+| Column                | Type          | Options                                |
+| --------------------- | ------------- | -------------------------------------- |
+| profile               | references    | null: false, foreign_key: true         |
+| country_id            | integer       |                                        |
+
+### Associations
+- belongs_to :profile
+- belongs_to  :country
+
+## wannastay_countriesテーブル
+| Column                | Type          | Options                                |
+| --------------------- | ------------- | -------------------------------------- |
+| profile               | references    | null: false, foreign_key: true         |
+| country_id            | integer       |                                        |
+
+### Associations
+- belongs_to :profile
+- belongs_to  :country
+
+## wannavisit_countriesテーブル
+| Column                | Type          | Options                                |
+| --------------------- | ------------- | -------------------------------------- |
+| profile               | references    | null: false, foreign_key: true         |
+| country_id            | integer       |                                        |
+
+### Associations
+- belongs_to :profile
+- belongs_to  :country
 
 ## questionsテーブル
 | Column                | Type          | Options                                |
@@ -73,7 +112,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 - has_many :likes, dependent: :destroy
 - has_many :tag_maps, dependent: :destroy
 
-## Likesテーブル
+## likesテーブル
 | Column                | Type          | Options                                |
 | --------------------- | ------------- | -------------------------------------- |
 | question              | references    | null: false, foreign_key: true         |
@@ -83,7 +122,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 - belongs_to :user
 - belongs_to :question
 
-## TagMapsテーブル
+## tag_mapsテーブル
 | Column                | Type          | Options                                |
 | --------------------- | ------------- | -------------------------------------- |
 | question              | references    | null: false, foreign_key: true         |
@@ -93,7 +132,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 - belongs_to :question
 - belongs_to :tag
 
-## Answersテーブル
+## answersテーブル
 | Column                | Type          | Options                                |
 | --------------------- | ------------- | -------------------------------------- |
 | content               | text          | null: false                            |
@@ -106,7 +145,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 - belongs_to :question
 - has_one :best_answer
 
-## BestAnswersテーブル
+## best_answersテーブル
 | Column                | Type          | Options                                |
 | --------------------- | ------------- | -------------------------------------- |
 | question              | references    | null: false, foreign_key: true         |
@@ -116,24 +155,8 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 - belongs_to :question
 - belongs_to :answer
 
-## CountryWantToStayテーブル
-
-### Associations
-
-## CountryWantToVisitテーブル
-
-### Associations
-
-## CountryStayedテーブル
-
-### Associations
-
-## CountryVisitedテーブル
-
-### Associations
-
 # データベース設計
-[![Image from Gyazo](https://i.gyazo.com/41ad5f0070edc6624be2ecd29177ce88.png)](https://gyazo.com/41ad5f0070edc6624be2ecd29177ce88)
+[![Image from Gyazo](https://i.gyazo.com/48bb510156f0eaa064ec022d88f97667.png)](https://gyazo.com/48bb510156f0eaa064ec022d88f97667)
 
 
 # 画面遷移図
