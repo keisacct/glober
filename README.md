@@ -1,24 +1,47 @@
-# README
+# アプリケーション名
+GLOBER
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション概要
+海外在住もしくは海外在住予定のユーザー同士で質疑応答とSNS上でその先の繋がりを広げることができる
 
-Things you may want to cover:
+# URL
 
-* Ruby version
+# テスト用アカウント
+- Basic認証ID：
+- Basic認証Password：
+- メールアドレス：
+- パスワード：
 
-* System dependencies
+# 利用方法
+## 目標投稿
 
-* Configuration
+# テーブル設計
+## Userテーブル
+| Column                | Type          | Options                            |
+| --------------------- | ------------- | ---------------------------------- |
+| email                 | string        | null: false                        |
+| encrypted_password    | string        | null: false                        |
+| nickname              | string        | null: false                        |
 
-* Database creation
 
-* Database initialization
+## Questionテーブル
 
-* How to run the test suite
+## Likeテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+## TagMapテーブル
 
-* Deployment instructions
+## Answerテーブル
 
-* ...
+## BestAnswerテーブル
+
+## CountryWantToStayテーブル
+
+## CountryWantToVisitテーブル
+
+## CountryStayedテーブル
+
+## CountryVisitedテーブル
+
+
+
+continue...
