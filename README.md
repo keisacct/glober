@@ -34,8 +34,19 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 
 ### Associations
 - has_one :profile, dependent: :destroy
+- has_one :sns_credential, dependent: :destroy
 - has_many :questions
 - has_many :answers
+
+## sns_credentialsテーブル
+| Column                | Type          | Options                            |
+| --------------------- | ------------- | ---------------------------------- |
+| user                  | references    | foreign_key: true                  |
+| provider              | string        |                                    |
+| uid                   | string        |                                    |
+
+### Associations
+- belongs_to :user
 
 ## profilesテーブル
 | Column                | Type          | Options                                |
