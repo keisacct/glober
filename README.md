@@ -22,33 +22,118 @@ GLOBER
 https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF6tc/edit?usp=sharing
 
 # テーブル設計
-## Userテーブル
+## usersテーブル
 | Column                | Type          | Options                            |
 | --------------------- | ------------- | ---------------------------------- |
 | email                 | string        | null: false                        |
-| encrypted_password    | string        | null: false                        |
-| nickname              | string        | null: false                        |
+| password              | string        | null: false                        |
+| gmail_id              | string        |                                    |
+| facebook_id           | string        |                                    |
+| linkedin_id           | string        |                                    |
+| twitter_id            | string        |                                    | 
+
+### Associations
+- has_one :profile, dependent: :destroy
+- has_many :questions
+- has_many :answers
+
+## profilesテーブル
+| Column                | Type          | Options                                |
+| --------------------- | ------------- | -------------------------------------- |
+| user                  | references    | null: false, foreign_key: true         |
+| user_icon             | string        |                                        |
+| username              | string        | null: false, default: '', unique: true |
+| introduction          | text          |                                        |
+| twitter_url           | varchar       |                                        |
+| linkedin_url          | varchar       |                                        |
+| facebook_url          | varchar       |                                        |
+| blog_url              | varchar       |                                        | 
+| stayed_countries      | integer       |                                        |
+
+### Associations
+- belongs_to :user
+- has_many :stayed_countries, dependent: :destroy
+- has_many :visited_countries, dependent: :destroy
+- has_many :wannastay_countries, dependent: destroy
+- has_many :wannavisit_countries, dependent, destroy
 
 
-## Questionsテーブル
+## questionsテーブル
+| Column                | Type          | Options                                |
+| --------------------- | ------------- | -------------------------------------- |
+| title                 | string        | null: false                            |
+| content               | text          | null: false                            |
+| user                  | references    | null: false, foreign_key: true         |
+| best_answer           | references    | foreign_key: true                      |
+
+### Associations
+- belongs_to :user
+- has_one :best_answer
+- has_many :answers
+- has_many :likes, dependent: :destroy
+- has_many :tag_maps, dependent: :destroy
 
 ## Likesテーブル
+| Column                | Type          | Options                                |
+| --------------------- | ------------- | -------------------------------------- |
+| question              | references    | null: false, foreign_key: true         |
+| user                  | references    | null: false, foreign_key: true         |
+
+### Associations
+- belongs_to :user
+- belongs_to :question
 
 ## TagMapsテーブル
+| Column                | Type          | Options                                |
+| --------------------- | ------------- | -------------------------------------- |
+| question              | references    | null: false, foreign_key: true         |
+| tag_id                | integer       |                                        |
+
+### Associations
+- belongs_to :question
+- belongs_to :tag
 
 ## Answersテーブル
+| Column                | Type          | Options                                |
+| --------------------- | ------------- | -------------------------------------- |
+| content               | text          | null: false                            |
+| user                  | references    | null: false, foreign_key: true         |
+| question              | references    | null: false, foreign_key: true         |
+| best_answer           | references    | foreign_key: true                      |
+
+### Associations
+- belongs_to :user
+- belongs_to :question
+- has_one :best_answer
 
 ## BestAnswersテーブル
+| Column                | Type          | Options                                |
+| --------------------- | ------------- | -------------------------------------- |
+| question              | references    | null: false, foreign_key: true         |
+| answer                | references    | null: false, foreign_key: true         |
+
+### Associations
+- belongs_to :question
+- belongs_to :answer
 
 ## CountryWantToStayテーブル
 
+### Associations
+
 ## CountryWantToVisitテーブル
+
+### Associations
 
 ## CountryStayedテーブル
 
+### Associations
+
 ## CountryVisitedテーブル
 
+### Associations
+
 # データベース設計
+[![Image from Gyazo](https://i.gyazo.com/41ad5f0070edc6624be2ecd29177ce88.png)](https://gyazo.com/41ad5f0070edc6624be2ecd29177ce88)
 
 
 # 画面遷移図
