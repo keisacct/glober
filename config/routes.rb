@@ -3,9 +3,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations', 
     sessions: 'users/sessions'
   }
-  root to: 'questions#index'
-  resources :users, only: [:show] do
-    resources :profiles, only: [:edit, :update]
-  end
+
+  root to: "questions#index"
+  resources :users, only: [:show, :edit, :update]
 
 end
