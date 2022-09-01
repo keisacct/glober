@@ -4,7 +4,9 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_one :profile, dependent: :destroy
-  has_many :sns_credentials
+  has_many :sns_credentials, dependent: :destroy
+
+  mount_uploader :user_icon, ImageUploader
 
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create

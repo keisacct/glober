@@ -3,6 +3,10 @@
 <table class="table">
     <tbody>
     <tr>
+        <%= f.label :user_icon %>
+        <%= f.file_field :user_icon %>
+    </tr>
+    <tr>
         <td>ユーザー名</td>
         <td><%= f.text_area :username, placeholder: "username", maxlenght: "40" %></td>
     </tr>
