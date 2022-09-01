@@ -33,7 +33,6 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | twitter_id            | string        |                                    | 
 
 ### Associations
-- has_one :profile, dependent: :destroy
 - has_many :sns_credentials, dependent: :destroy
 - has_many :questions
 - has_many :answers
@@ -75,7 +74,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | country_id            | integer       |                                        |
 
 ### Associations
-- belongs_to :profile
+- belongs_to :user
 - belongs_to  :country
 
 ## visited_countriesテーブル
@@ -85,7 +84,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | country_id            | integer       |                                        |
 
 ### Associations
-- belongs_to :profile
+- belongs_to :user
 - belongs_to  :country
 
 ## wannastay_countriesテーブル
@@ -95,7 +94,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | country_id            | integer       |                                        |
 
 ### Associations
-- belongs_to :profile
+- belongs_to :user
 - belongs_to  :country
 
 ## wannavisit_countriesテーブル
@@ -105,7 +104,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | country_id            | integer       |                                        |
 
 ### Associations
-- belongs_to :profile
+- belongs_to :user
 - belongs_to  :country
 
 ## questionsテーブル
