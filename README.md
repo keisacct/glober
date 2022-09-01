@@ -34,7 +34,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 
 ### Associations
 - has_one :profile, dependent: :destroy
-- has_one :sns_credential, dependent: :destroy
+- has_many :sns_credentials, dependent: :destroy
 - has_many :questions
 - has_many :answers
 
