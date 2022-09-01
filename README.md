@@ -166,7 +166,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 - belongs_to :answer
 
 # データベース設計
-[![Image from Gyazo](https://i.gyazo.com/cc86bbb43e1ce240b0b3625c2efe89fa.png)](https://gyazo.com/cc86bbb43e1ce240b0b3625c2efe89fa)
+[![Image from Gyazo](https://i.gyazo.com/71829fe5ef762805103b1978eeed4889.png)](https://gyazo.com/71829fe5ef762805103b1978eeed4889)
 
 # 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/0fc4e3fbb151c0e95ff34dfc4199462a.png)](https://gyazo.com/0fc4e3fbb151c0e95ff34dfc4199462a)
