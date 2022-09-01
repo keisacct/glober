@@ -8,27 +8,27 @@
     </tr>
     <tr>
         <td>ユーザー名</td>
-        <td><%= f.text_area :username, placeholder: "username", maxlenght: "40" %></td>
+        <td><%= f.text_field :username, placeholder: "username", maxlenght: "40" %></td>
     </tr>
     <tr>
         <td>紹介文:</td>
         <td><%= f.text_area :introduction, placeholder: "紹介文" %></td>
     </tr>
     <tr>
-        <td>https://twitter.com/</td>
-        <td><%= f.text_area :twitter_url, placeholder: "Twitter URL" %></td>
+        <td><%= f.label :twitter_url, 'Twitter URL' %></td>
+        <td><%= f.text_field :twitter_url, placeholder: "Optional" %></td>
     </tr>
     <tr>
-        <td>https://linkedin.com/</td>
-        <td><%= f.text_area :linkedin_url, placeholder: "LinkedIn URL" %></td>
+        <td><%= f.label :linkedin_url, 'LinkedIn URL' %></td>
+        <td><%= f.text_field :linkedin_url, placeholder: "Optional" %></td>
     </tr>
     <tr>
-        <td>https://facebook.com/</td>
-        <td><%= f.text_area :facebook_url, placeholder: "Facebook URL" %></td>
+        <td><%= f.label :facebook_url, 'Facebook URL' %></td>
+        <td><%= f.text_field :facebook_url, placeholder: "Optional" %></td>
     </tr>
     <tr>
-        <td>Blog URL:</td>
-        <td><%= f.text_area :blog_url, placeholder: "Blog URL" %></td>
+        <td><%= f.label :blog_url, 'Blog URL' %></td>
+        <td><%= f.text_field :blog_url, placeholder: "Optional" %></td>
     </tr>
 
     <tr>

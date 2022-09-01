@@ -2,50 +2,49 @@
   <div class="card-header bg-white">
     <h2>アカウント情報</h2>
   </div>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-sm-8">
-        <table class="table">
-          <tbody>
-            <tr>
-              <%= image_tag @user.user_icon.url %>
-            <tr>
-              <td>ユーザー名:</td>
-              <td><%= @user.username %></td>
-            </tr>
-            <tr>
-              <td>メールアドレス:</td>
-              <td><%= @user.email %></td>
-            </tr>
-            <tr>
-              <td>紹介文:</td>
-              <td><%= @user.introduction %></td>
-            </tr>
-            <tr>
-              <td>Twitter URL:</td>
-              <td><%= link_to "#{@user.twitter_url}", @user.twitter_url %></td>
-            </tr>
-            <tr>
-              <td>LinkeIn URL:</td>
-              <td><%= link_to "#{@user.linkedin_url}", @user.linkedin_url %></td>
-            </tr>
-            <tr>
-              <td>Facebook URL:</td>
-              <td><%= link_to "#{@user.facebook_url}", @user.facebook_url %></td>
-            </tr>
-            <tr>
-              <td>Blog URL:</td>
-              <td><%= link_to "#{@user.blog_url}", @user.blog_url %></td>
-            </tr>
-            
-          </tbody>
-        </table> 
-      </div>
-      <div class="col-sm-4">
-        <% if user_signed_in? && current_user.id == @user.id %>
-        <div class="d-flex flex-column"><%= link_to 'プロフィールを編集する', edit_user_path(current_user.id)%></div>
-        <% end %>
-      </div>
+  <div class = "sns-link">
+    <ul class="profile-links">
+      <li>
+       <%= image_tag @user.user_icon.url %>
+      </li>
+      <li class="profile-name">
+        <%= @user.username %>
+      </li>
+      <% if @user.twitter_url.present? %>
+        <li class="profile-link">
+          <%= link_to @user.twitter_url, target: :_blank do %>
+            <i class="fa-brands fa-twitter"></i>
+          <% end %>
+        </li>
+      <% end %>
+      <% if @user.linkedin_url.present? %>
+        <li class="profile-link">
+          <%= link_to @user.linkedin_url, target: :_blank do %>
+            <i class="fa-brands fa-linkedin"></i>
+          <% end %>
+        </li>
+      <% end %>
+      <% if @user.facebook_url.present? %>
+        <li class="profile-link">
+          <%= link_to @user.facebook_url, target: :_blank do %>
+            <i class="fa-brands fa-facebook"></i>
+          <% end %>
+        </li>
+      <% end %>
+      <% if @user.blog_url.present? %>
+        <li class="profile-link">
+          <%= link_to @user.blog_url, target: :_blank do %>
+            <i class="fa-solid fa-link"></i>
+          <% end %>
+        </li>
+      <% end %>
+      <li class="profile-introduction">
+        <%= @user.introduction %>
+      </li>
+  <div class="col-sm-4">
+    <% if user_signed_in? && current_user.id == @user.id %>
+    <div class="d-flex flex-column"><%= link_to 'プロフィールを編集する', edit_user_path(current_user.id)%>
+      <% end %>
     </div>
-  </div>  
-</div>
+  </div>
+</div>  
