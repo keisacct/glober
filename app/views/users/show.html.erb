@@ -8,7 +8,7 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>ユーザー名</td>
+              <td>ユーザー名:</td>
               <td><%= @user.username %></td>
             </tr>
             <tr>
@@ -16,9 +16,26 @@
               <td><%= @user.email %></td>
             </tr>
             <tr>
-              <td>自己紹介:</td>
+              <td>紹介文:</td>
               <td><%= @user.introduction %></td>
             </tr>
+            <tr>
+              <td>Twitter URL:</td>
+              <td><%= link_to "https://twitter.com/" + "#{@user.twitter_url}", "https://twitter.com/" + @user.twitter_url %></td>
+            </tr>
+            <tr>
+              <td>LinkeIn URL:</td>
+              <td><%= link_to "#{@user.linkedin_url}", @user.linkedin_url %></td>
+            </tr>
+            <tr>
+              <td>Facebook URL:</td>
+              <td><%= link_to "#{@user.facebook_url}", @user.facebook_url %></td>
+            </tr>
+            <tr>
+              <td>Blog URL:</td>
+              <td><%= link_to "#{@user.blog_url}", @user.blog_url %></td>
+            </tr>
+            
           </tbody>
         </table> 
       </div>

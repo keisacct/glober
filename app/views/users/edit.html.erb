@@ -10,6 +10,22 @@
         <td>紹介文:</td>
         <td><%= f.text_area :introduction, placeholder: "紹介文" %></td>
     </tr>
+    <tr>
+        <td>https://twitter.com/</td>
+        <td><%= f.text_area :twitter_url, placeholder: "Twitter URL" %></td>
+    </tr>
+    <tr>
+        <td>https://linkedin.com/</td>
+        <td><%= f.text_area :linkedin_url, placeholder: "LinkedIn URL" %></td>
+    </tr>
+    <tr>
+        <td>https://facebook.com/</td>
+        <td><%= f.text_area :facebook_url, placeholder: "Facebook URL" %></td>
+    </tr>
+    <tr>
+        <td>Blog URL:</td>
+        <td><%= f.text_area :blog_url, placeholder: "Blog URL" %></td>
+    </tr>
 
     <tr>
         <td><%= f.submit '完了' %></td>
