@@ -1,11 +1,8 @@
-<div class="card col-sm-10 mx-auto mt-5 px-0">
-  <div class="card-header bg-white">
-    <h2>アカウント情報</h2>
-  </div>
+<div class="contents row">
   <div class = "sns-link">
     <ul class="profile-links">
       <li>
-       <%= image_tag @user.user_icon.url %>
+       <%= image_tag @user.user_icon.url, class:"profile-image" %>
       </li>
       <li class="profile-name">
         <%= @user.username %>
@@ -41,9 +38,10 @@
       <li class="profile-introduction">
         <%= @user.introduction %>
       </li>
-  <div class="col-sm-4">
-    <% if user_signed_in? && current_user.id == @user.id %>
-    <div class="d-flex flex-column"><%= link_to 'プロフィールを編集する', edit_user_path(current_user.id)%>
+    </ul>
+    <div class="col-sm-4">
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to 'プロフィールを編集する', edit_user_path(current_user.id), class: "btn post" %>
       <% end %>
     </div>
   </div>

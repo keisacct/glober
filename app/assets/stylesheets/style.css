@@ -748,7 +748,7 @@ header.header {
 }
 
 header.header div.header__bar.row {
-  position: absolute;
+  position: relative;
 }
 
 header.header div.header__bar.row h1.grid-6 {
@@ -1056,4 +1056,10 @@ footer p {
 
 .search-form .search-btn {
   width: 10%;
+}
+
+.profile-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 100px;
 }
