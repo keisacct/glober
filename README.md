@@ -33,8 +33,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | twitter_id            | string        |                                    | 
 
 ### Associations
-- has_one :profile, dependent: :destroy
-- has_one :sns_credential, dependent: :destroy
+- has_many :sns_credentials, dependent: :destroy
 - has_many :questions
 - has_many :answers
 
@@ -75,7 +74,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | country_id            | integer       |                                        |
 
 ### Associations
-- belongs_to :profile
+- belongs_to :user
 - belongs_to  :country
 
 ## visited_countriesテーブル
@@ -85,7 +84,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | country_id            | integer       |                                        |
 
 ### Associations
-- belongs_to :profile
+- belongs_to :user
 - belongs_to  :country
 
 ## wannastay_countriesテーブル
@@ -95,7 +94,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | country_id            | integer       |                                        |
 
 ### Associations
-- belongs_to :profile
+- belongs_to :user
 - belongs_to  :country
 
 ## wannavisit_countriesテーブル
@@ -105,7 +104,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 | country_id            | integer       |                                        |
 
 ### Associations
-- belongs_to :profile
+- belongs_to :user
 - belongs_to  :country
 
 ## questionsテーブル
@@ -167,8 +166,7 @@ https://docs.google.com/spreadsheets/d/1D8LC7zbPprUyPFEQKF3HVjMN3V0I1ghVWAcVVVXF
 - belongs_to :answer
 
 # データベース設計
-[![Image from Gyazo](https://i.gyazo.com/ca6784bb2ea61c92f875d6599fbb445c.png)](https://gyazo.com/ca6784bb2ea61c92f875d6599fbb445c)
-
+[![Image from Gyazo](https://i.gyazo.com/71829fe5ef762805103b1978eeed4889.png)](https://gyazo.com/71829fe5ef762805103b1978eeed4889)
 
 # 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/0fc4e3fbb151c0e95ff34dfc4199462a.png)](https://gyazo.com/0fc4e3fbb151c0e95ff34dfc4199462a)
