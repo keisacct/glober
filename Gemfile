@@ -64,3 +64,4 @@ gem 'mini_magick'
 
 gem 'font-awesome-sass'
 
+gem 'active_hash'
