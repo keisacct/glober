@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :questions
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations', 
@@ -8,5 +7,6 @@ Rails.application.routes.draw do
 
   root to: "questions#index"
   resources :users, only: [:show, :edit, :update]
+  resources :questions
 
 end
