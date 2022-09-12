@@ -1,10 +1,9 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, except: :index
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: %i[ show edit update destroy ]
 
   # GET /questions or /questions.json
   def index
-    @questions = Question.order(created_at: "DESC")
+    @questions = Question.all
   end
 
   # GET /questions/1 or /questions/1.json
@@ -26,7 +25,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to question_url(@question), notice: "質問が正常に作成されました。" }
+        format.html { redirect_to question_url(@question), notice: "Question was successfully created." }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +38,7 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to question_url(@question), notice: "質問が正常に更新されました。" }
+        format.html { redirect_to question_url(@question), notice: "Question was successfully updated." }
         format.json { render :show, status: :ok, location: @question }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +52,7 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: "質問が正常に削除されました。" }
+      format.html { redirect_to questions_url, notice: "Question was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -66,6 +65,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:title, :content).merge(user_id: current_user.id)
+      params.require(:question).permit(:title, :content)
     end
 end
