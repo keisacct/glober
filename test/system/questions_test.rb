@@ -14,8 +14,8 @@ class QuestionsTest < ApplicationSystemTestCase
     visit questions_url
     click_on "New Question"
 
+    fill_in "Content", with: @question.content
     fill_in "Title", with: @question.title
-    fill_in "User", with: @question.user_id
     click_on "Create Question"
 
     assert_text "Question was successfully created"
@@ -26,8 +26,8 @@ class QuestionsTest < ApplicationSystemTestCase
     visit questions_url
     click_on "Edit", match: :first
 
+    fill_in "Content", with: @question.content
     fill_in "Title", with: @question.title
-    fill_in "User", with: @question.user_id
     click_on "Update Question"
 
     assert_text "Question was successfully updated"

@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_07_225918) do
-
-  create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body", size: :long
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
-  end
+ActiveRecord::Schema.define(version: 2022_09_12_014926) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -44,11 +34,10 @@ ActiveRecord::Schema.define(version: 2022_09_07_225918) do
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title", null: false
-    t.bigint "user_id", null: false
+    t.string "title"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,6 +69,5 @@ ActiveRecord::Schema.define(version: 2022_09_07_225918) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "questions", "users"
   add_foreign_key "sns_credentials", "users"
 end
