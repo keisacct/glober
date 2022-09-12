@@ -41,7 +41,7 @@
     </ul>
     <div class="col-sm-4">
       <% if user_signed_in? && current_user.id == @user.id %>
-        <%= link_to 'プロフィールを編集する', edit_user_path(current_user.id), class: "btn post" %>
+        <%= link_to 'プロフィールを編集する', edit_user_path(current_user.id) %>
       <% end %>
     </div>
   </div>
