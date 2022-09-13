@@ -9,15 +9,30 @@
     <h2 class="name">
       <%= @question.title %>
     </h2>
-    <% if user_signed_in? && current_user.id == @question.user_id %>
     <div class="d-flex flex-row bd-highlight mb-2">
-      <div class="p-2 bd-highlight"><%= link_to '編集する', edit_question_path(@question), class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;" %></div>
-      <div class="p-2 bd-highlight"><%= link_to '削除する', question_path, method: :delete, class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;", data: { confirm: '本当に質問を削除しますか？' } %></div>
+      <% if user_signed_in? && current_user.id == @question.user_id %>
+        <div class="p-2 bd-highlight"><%= link_to '編集する', edit_question_path(@question), class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;" %></div>
+        <div class="p-2 bd-highlight"><%= link_to '削除する', question_path, method: :delete, class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;", data: { confirm: '本当に質問を削除しますか？' } %></div>
+      <% end%>
+      <% if user_signed_in? && current_user.id != @question.user_id %>
+        <div class="p-2 bd-highlight"><%= link_to '回答する', new_question_answer_path(@question.id), class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;" %></div>
+      <% end %>
     </div>
-    <% end %>
     <div class="question-content-box">
       <span><%= @question.content %></span>
     </div>
+  </div>
+</div>
+
+<div class="answer-show">
+  <div class="answer-box">
+    <% if @answers.present? %>
+      <% @answers.each do |answer| %>
+        <div class="question-content-box">
+          <span><%= answer.content %></span>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

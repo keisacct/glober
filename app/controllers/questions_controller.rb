@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!, exept: %i[ index show ]
   before_action :set_question, only: %i[ show edit update destroy ]
 
   # GET /questions or /questions.json
@@ -8,6 +9,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1 or /questions/1.json
   def show
+    @answers = Answer.where(question_id: @question.id)
   end
 
   # GET /questions/new
