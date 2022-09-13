@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions or /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.order(created_at: :desc)
   end
 
   # GET /questions/1 or /questions/1.json
@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to question_url(@question), notice: "Question was successfully created." }
+        format.html { redirect_to question_url(@question), notice: "投稿が完了しました。" }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to question_url(@question), notice: "Question was successfully updated." }
+        format.html { redirect_to question_url(@question), notice: "質問が編集されました。" }
         format.json { render :show, status: :ok, location: @question }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:title, :content)
+      params.require(:question).permit(:title, :content).merge(user_id: current_user.id)
     end
 end

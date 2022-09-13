@@ -1,0 +1,45 @@
+.mypage-show {
+    background-color: #f8f8f8;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh 0;
+  }
+  
+  .mypage-box {
+    background-color: #FFF;
+    width: 50vw;
+    /* min-width: 1200px; */
+    /* padding: 10vh 15vw; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+.profile-box1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.profile-edit-link-box {
+    margin-bottom: 50px;
+}
+
+.rounded-circle {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.mypage-content-box {
+    font-size: 20px;
+    margin-top: 40px;
+    padding: 0 100px;
+    overflow-wrap: anywhere;
+  }

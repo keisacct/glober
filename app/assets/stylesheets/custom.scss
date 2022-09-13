@@ -9,9 +9,9 @@
 }
 
 
-.profile-links {
+.sns-links {
     list-style: none;
-    .profile-link {
+    .sns-existed-link {
       font-size: 40px;
       display: inline-block;
       margin-right: 15px;
@@ -24,6 +24,20 @@
       .fa-linkedin{color:#0c0e0f;}
       /*Blog*/
       .fa-link{color: #0c0e0f;}
+    }
+    .sns-nil-link {
+      font-size: 40px;
+      display: inline-block;
+      margin-right: 15px;
+      text-align: right;
+      /*Twitter*/
+      .fa-twitter{color:#eef1f2;}
+      /*Facebook*/
+      .fa-facebook{color:#eef1f2;}
+      /*LinkedIn*/
+      .fa-linkedin{color:#eef1f2;}
+      /*Blog*/
+      .fa-link{color: #eef1f2;}
     }
   }
   

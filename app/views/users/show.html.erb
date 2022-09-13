@@ -1,48 +1,87 @@
-<div class="contents row">
-  <div class = "sns-link">
-    <ul class="profile-links">
-      <li>
-       <%= image_tag @user.user_icon.url, class:"profile-image" %>
-      </li>
-      <li class="profile-name">
-        <%= @user.username %>
-      </li>
-      <% if @user.twitter_url.present? %>
-        <li class="profile-link">
-          <%= link_to @user.twitter_url, target: :_blank do %>
-            <i class="fa-brands fa-twitter"></i>
+<header class='top-page-header'>
+    <div class="header-container">
+        <%= link_to image_tag('horizontal_on_white_by_logaster.png', class: 'glober-icon'), "/" %>
+    </div>
+</header>
+<div class="mypage-show">
+  <div class="mypage-box">
+    <div class="profile-box1">
+      <div class="profile-box2">
+        <div>
+          <%= image_tag @user.user_icon.url, class:"rounded-circle", size: "200x200" %>
+        </div>
+        <div>
+          <h3><%= @user.username %></h3>
+        </div>
+      </div>
+      <div class="profile-box2">
+        <div class="profile-edit-link-box">
+          <% if user_signed_in? && current_user.id == @user.id %>
+            <div class="profile-edit-link"><%= link_to 'プロフィールを編集', edit_user_path(current_user.id), class: "btn btn-outline-secondary rounded-pill"%></div>
           <% end %>
-        </li>
-      <% end %>
-      <% if @user.linkedin_url.present? %>
-        <li class="profile-link">
-          <%= link_to @user.linkedin_url, target: :_blank do %>
-            <i class="fa-brands fa-linkedin"></i>
-          <% end %>
-        </li>
-      <% end %>
-      <% if @user.facebook_url.present? %>
-        <li class="profile-link">
-          <%= link_to @user.facebook_url, target: :_blank do %>
-            <i class="fa-brands fa-facebook"></i>
-          <% end %>
-        </li>
-      <% end %>
-      <% if @user.blog_url.present? %>
-        <li class="profile-link">
-          <%= link_to @user.blog_url, target: :_blank do %>
-            <i class="fa-solid fa-link"></i>
-          <% end %>
-        </li>
-      <% end %>
-      <li class="profile-introduction">
-        <%= @user.introduction %>
-      </li>
-    </ul>
-    <div class="col-sm-4">
-      <% if user_signed_in? && current_user.id == @user.id %>
-        <%= link_to 'プロフィールを編集する', edit_user_path(current_user.id) %>
-      <% end %>
+        </div>
+            <div>
+              <ul class="sns-links">
+                <% if @user.twitter_url.present? %>
+                  <li class="sns-existed-link">
+                    <%= link_to @user.twitter_url, target: :_blank do %>
+                      <i class="fa-brands fa-twitter"></i>
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li class="sns-nil-link">
+                    <i class="fa-brands fa-twitter"></i>
+                  </li>
+                <% end %>
+                <% if @user.linkedin_url.present? %>
+                  <li class="sns-existed-link">
+                    <%= link_to @user.linkedin_url, target: :_blank do %>
+                      <i class="fa-brands fa-linkedin"></i>
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li class="sns-nil-link">
+                    <i class="fa-brands fa-linkedin "></i>
+                  </li>
+                <% end %>
+                <% if @user.facebook_url.present? %>
+                  <li class="sns-existed-link">
+                    <%= link_to @user.facebook_url, target: :_blank do %>
+                      <i class="fa-brands fa-facebook"></i>
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li class="sns-nil-link">
+                    <i class="fa-brands fa-facebook"></i>
+                  </li>
+                <% end %>
+                <% if @user.blog_url.present? %>
+                  <li class="sns-existed-link">
+                    <%= link_to @user.blog_url, target: :_blank do %>
+                      <i class="fa-solid fa-link"></i>
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li class="sns-nil-link">
+                    <i class="fa-solid fa-link"></i>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+      </div>
+      <div class="mypage-content-box">
+        <span><%= @user.introduction %></span>
+      </div>
+      <div class="map-chart">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <div id="regions_div" style="width: 900px; height: 500px;"></div>
+      </div>
     </div>
   </div>
-</div>  
+
+
+   
+
+  <%= render "shared/footer" %>
+

@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :sns_credentials, dependent: :destroy
+  has_many :questions
 
   mount_uploader :user_icon, ImageUploader
 

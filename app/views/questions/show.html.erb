@@ -1,14 +1,25 @@
+<%= render "shared/header" %>
+
+<div class="d-flex justify-content-center">
 <p id="notice"><%= notice %></p>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+<div class="question-show">
+  <div class="question-box">
+    <h2 class="name">
+      <%= @question.title %>
+    </h2>
+    <% if user_signed_in? && current_user.id == @question.user_id %>
+    <div class="d-flex flex-row bd-highlight mb-2">
+      <div class="p-2 bd-highlight"><%= link_to '編集する', edit_question_path(@question), class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;" %></div>
+      <div class="p-2 bd-highlight"><%= link_to '削除する', question_path, method: :delete, class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;", data: { confirm: '本当に質問を削除しますか？' } %></div>
+    </div>
+    <% end %>
+    <div class="question-content-box">
+      <span><%= @question.content %></span>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @question.content %>
-</p>
+<%= render "shared/footer" %>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
