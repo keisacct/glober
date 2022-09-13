@@ -1,0 +1,23 @@
+<header class='top-page-header'>
+    <div class="header-container">
+        <div class='search-bar-contents'>
+            <%= link_to image_tag('horizontal_on_white_by_logaster.png', class: 'glober-icon'), "/" %>
+        </div>
+        <% if user_signed_in? %>
+            <div class='btn-group'>
+                <button class="btn btn-secondary btn-lg dropdown-toggle" style="width:130px; height:45px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><%= link_to 'マイページ', user_path(current_user.id), class:"dropdown-item" %></li>
+                    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"%>
+                </ul>
+            </div>
+        <% else %>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to 'ログイン', user_session_path, class: "nav-link" %>
+            </ul>
+        <% end %>
+    </div>
+</header>
