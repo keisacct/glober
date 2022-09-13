@@ -11,6 +11,8 @@ require("channels")
 import '@fortawesome/fontawesome-free/js/all';
 import "bootstrap";
 import "../stylesheets/application.scss";
+ 
+require("../map")
 
 //= require jquery3
 //= require popper
