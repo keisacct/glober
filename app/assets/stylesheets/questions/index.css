@@ -1,0 +1,25 @@
+.question-title {
+    margin: 0 10% 0 10%;
+    text-align: center;
+}
+
+.card-deck {
+    margin: 0 10% 0 10%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin-left: 20px;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
