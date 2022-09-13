@@ -1,34 +1,36 @@
 <%= render "shared/header" %>
 
-<p id="notice"><%= notice %></p>
-
-<div class="container">
-  
-  <div class="question-title">
-    <h2>すべての質問（新着順）</h2>
+<div class="main-page">
+  <div class="d-flex justify-content-center">
+  <p id="notice"><%= notice %></p>
   </div>
 
-  <div class="card-deck">
-    <% @questions.each do |question| %>
-      <div class="card mb-3 mb-5" style="width: 20rem; height: 20rem;">
-        <div class="card-header" style="height: 40px; background-color: gray;">
-          <%= link_to '', question, class: "stretched-link", style:"color: black; text-decoration: none;" %>
+  <div class="container">
+    <div class="question-title">
+      <h2>すべての質問（新着順）</h2>
+    </div>
+    <div class="card-deck">
+      <% @questions.each do |question| %>
+        <div class="card mb-3 mb-5" style="width: 20rem; height: 20rem;">
+          <div class="card-header" style="height: 100px; background-color: gray;">
+            <%= link_to '', question, class: "stretched-link", style:"color: black; text-decoration: none;" %>
+          </div>
+          <div class="card-body">
+            <h4 class="card-text"><%= truncate(question.title, length:40) %></h4>
+          </div>
+          <div class="card-footer" style="background-color: white;">          
+            <%# <% if answer.present? %>
+              <%# <button type="button" class="btn btn-success" style="margin-left:5px;">回答済み</button> %>
+            <%# <% end %>
+              <%= question.user.username %>
+          </div>
         </div>
-        <div class="card-body">
-          <h3 class="card-text"><%= truncate(question.title, length:40) %></h3>
-        </div>
-        <div class="card-footer" style="background-color: white;">          
-          <%# <% if answer.present? %>
-            <%# <button type="button" class="btn btn-success" style="margin-left:5px;">回答済み</button> %>
-          <%# <% end %>
-            <%= question.user.username %>
-        </div>
-      </div>
+      <% end %>
+    </div>
+  </div>
+
+    <% if user_signed_in? %>
+      <i class="bi bi-plus-circle-fill"></i>
+      <%= link_to "質問する", new_question_path, class: 'new-question-btn' %>
     <% end %>
-  </div>
 </div>
-
-  <% if user_signed_in? %>
-    <i class="bi bi-plus-circle-fill"></i>
-    <%= link_to "質問する", new_question_path, class: 'new-question-btn' %>
-  <% end %>
