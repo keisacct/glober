@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, exept: %i[ index show ]
   before_action :set_question, only: %i[ show edit update destroy ]
+  impressionist :actions=> [:show]
 
   # GET /questions or /questions.json
   def index
@@ -10,6 +11,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1 or /questions/1.json
   def show
     @answers = Answer.where(question_id: @question.id)
+    impressionist(@question, nil, unique: [:session_hash])
   end
 
   # GET /questions/new

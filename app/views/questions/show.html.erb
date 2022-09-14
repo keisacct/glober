@@ -11,7 +11,7 @@
       <h2 class="name">
         <%= @question.title %>
       </h2>
-      <div class="d-flex flex-row justify-content-left bd-highlight mb-2">
+      <div class="d-flex flex-row bd-highlight mb-2">
         <small class="text-muted"><%= @question.created_at.strftime('%Y/%m/%d %H:%M') %></small>
       </div>
       <div class="d-flex flex-row bd-highlight mb-2">
@@ -25,9 +25,11 @@
       <div class="question-content-box">
         <span><%= @question.content %></span>
       </div>
-      <div class="question-icon-box">
-        <%= link_to image_tag(@question.user.user_icon.url, class:"rounded-circle", size: "80x80"), user_path(@question.user.id) %>
-        <h5 class="question-username"><%= link_to @question.user.username, user_path(@question.user.id), class: "font-monospace", style: "color: black;" %>さんの質問<h5>
+      <div class="question-poster-box">
+        <div class="question-icon-box">
+          <%= link_to image_tag(@question.user.user_icon.url, class:"rounded-circle", size: "80x80"), user_path(@question.user.id) %>
+          <h5 class="question-username"><%= link_to @question.user.username, user_path(@question.user.id), class: "font-monospace", style: "color: black;" %>さんの質問<h5>
+        </div>
       </div>
       
 
@@ -75,7 +77,6 @@
                 <%= link_to '回答する', new_question_answer_path(@question.id), class: "btn btn-success btn-lg rounded-pill", style: "text-decoration: none; color: white; width: 200px;", role: "button"%>
               <% end %>
             </div>
-            <%# <div class="border-bottom border-secondary"></div> %>
           </div>
         </div>
       <% end %>
@@ -83,8 +84,5 @@
 </div>
 
 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"%>
-
-
-
 <%= render "shared/footer" %>
 

@@ -69,3 +69,5 @@ gem 'active_hash'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'bootstrap'
+
+gem 'impressionist'
