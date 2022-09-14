@@ -10,13 +10,14 @@
             </form>
         </div>
         <% if user_signed_in? %>
-            <div class='btn-group'>
-                <button class="btn btn-secondary btn-lg dropdown-toggle" style="width:130px; height:45px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Menu
+            <div class='dropdown'>
+                <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                    <%= image_tag current_user.user_icon.url, class:"rounded-circle", size: "60x60" %>
+                    <%# <span class="caret"></span> %>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                     <li><%= link_to 'マイページ', user_path(current_user.id), class:"dropdown-item" %></li>
-                    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"%>
+                    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"%></li>
                 </ul>
             </div>
         <% else %>
@@ -38,4 +39,5 @@
             <a class="nav-link" href="#">マップ</a>
         </li>
     </ul>
+
 </header>
