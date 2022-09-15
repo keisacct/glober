@@ -27,7 +27,7 @@
 
 .question-content-box {
   font-size: 20px;
-  margin-bottom: 10vh;
+  /* margin-bottom: 10vh; */
   overflow-wrap: anywhere;
 }
 
@@ -74,12 +74,17 @@
   text-decoration: none;
 }
 
-.border-bottom {
-  /* border: 1px solid; */
+.border-top {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 20px;
+}
+
+.border-bottom {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
 }
 
 .answer-show {
@@ -90,7 +95,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 1px solid red; */
+}
+
+.answer-btn {
+  margin-top: 50px;
 }
 
 
@@ -99,6 +107,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  /* justify-content: flex-start; */
   align-items: center;
 }
 

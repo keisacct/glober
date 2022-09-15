@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
     before_action :move_to_question_page, only: %i[ edit update destroy ]
 
     def new
-        @answer = Answer.new
+        @answer = @question.answers.build
     end
 
     def create

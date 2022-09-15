@@ -1,8 +1,5 @@
 .new-question-btn {
     position: fixed;
-    bottom: 10%; 
-    right: 10%;
-    /* padding: 6px 40px; */
-    display: flex;
-    flex-direction: row;
+    bottom: 15%; 
+    right: 15%;
   }
