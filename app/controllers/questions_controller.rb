@@ -3,9 +3,10 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i[ show edit update destroy ]
   impressionist :actions=> [:show]
 
+
   # GET /questions or /questions.json
   def index
-    @questions = Question.order(created_at: :desc).page(params[:page]).per(3)
+    @questions = Question.order(created_at: :desc).page(params[:page]).per(12)
   end
 
   # GET /questions/1 or /questions/1.json

@@ -11,23 +11,28 @@
     </div>
     <div class="card-deck">
       <% @questions.each do |question| %>
-        <div class="card mb-3 mb-5" style="width: 20rem; height: 20rem;">
-          <div class="card-header" style="height: 100px; background-color: gray;">
-            <%= link_to '', question, class: "stretched-link", style:"color: black; text-decoration: none;" %>
+        <div class="card mb-3 mb-5" style="width: 25rem; height: 32rem;">
+          <div class="card-header" style="height: 70px; background-color: gray;">
+            <%= link_to image_tag(question.user.user_icon.url, class:"rounded-circle border border-3", size: "70x70"), question, class: "stretched-link", style:"color: black; text-decoration: none;" %>
           </div>
           <div class="card-body">
-            <h4 class="card-text"><%= truncate(question.title, length:40) %></h4>
+          <% if question.answers.present? %>
+            <button type="button" class="btn btn-success" style="width: 40%">回答済み</button>
+          <% end %>
+          <% if question.answers.present? %>
+            <button type="button" class="btn btn-primary" style="width: 55%">ベストアンサー</button>
+          <% end %>
+            <h3 class="card-text"><%= truncate(question.title, length:40) %></h3>
           </div>
           <div class="card-footer" style="background-color: white;">          
-            <%# <% if answer.present? %>
-              <%# <button type="button" class="btn btn-success" style="margin-left:5px;">回答済み</button> %>
-            <%# <% end %>
-              <%= question.user.username %>
+            <div><%= question.user.username %></div>
           </div>
         </div>
       <% end %>
     </div>
-    <%= paginate @questions %>
+    <div class="d-flex justify-content-center">
+      <%= paginate @questions %>
+    </div>
   </div>
 
   <%= render "shared/question_btn" %>
