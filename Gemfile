@@ -73,3 +73,5 @@ gem 'jquery-rails'
 gem 'bootstrap'
 
 gem 'impressionist'
+
+gem 'kaminari'
