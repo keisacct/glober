@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :questions do
-    resources :answers, only: [:new, :create]
+    resources :answers, except: [:index, :show]
   end
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',

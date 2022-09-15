@@ -1,41 +1,32 @@
 <%= render "shared/header" %>
 
 <div class="d-flex justify-content-center">
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 </div>
-
 <div class="question-show">
   <div class="question-box">
-    <div class="border-bottom border-info"></div>
-      
+    <div class="border-bottom border-info"></div>   
       <h2 class="name">
         <%= @question.title %>
       </h2>
-      <div class="d-flex flex-row bd-highlight mb-2">
-        <small class="text-muted"><%= @question.created_at.strftime('%Y/%m/%d %H:%M') %></small>
+      <div class="d-flex flex-row bd-highlight">
+        <small class="text-muted"><%= l @question.created_at %></small>
       </div>
-      <div class="d-flex flex-row bd-highlight mb-2">
+      <div class="d-flex flex-row bd-highlight">
         <% if user_signed_in? && current_user.id == @question.user_id && @answers.blank? %>
           <div class="p-2 bd-highlight"><%= link_to '編集する', edit_question_path(@question), class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;" %></div>
           <div class="p-2 bd-highlight"><%= link_to '削除する', question_path, method: :delete, class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;", data: { confirm: '本当に質問を削除しますか？' } %></div>
         <% end%>
-      </div>
-
-      
-      <div class="question-content-box">
-        <span><%= @question.content %></span>
       </div>
       <div class="question-poster-box">
         <div class="question-icon-box">
           <%= link_to image_tag(@question.user.user_icon.url, class:"rounded-circle", size: "80x80"), user_path(@question.user.id) %>
           <h5 class="question-username"><%= link_to @question.user.username, user_path(@question.user.id), class: "font-monospace", style: "color: black;" %>さんの質問<h5>
         </div>
+      </div>  
+      <div class="question-content-box">
+        <span><%= @question.content %></span>
       </div>
-      
-
-    
-  
-
     <div class="border-bottom border-success">
       <% if @answers.present? %>
         <h2 class="title lg-large line">みんなの回答（ <%= @answers.count %> ）</h2>
@@ -43,8 +34,6 @@
         <h2 class="title lg-large line">みんなの回答</h2>
       <% end %>
     </div>
-
-
       <% if @answers.present? %>
         <div class="mb-5">
           <% if user_signed_in? && current_user.id != @question.user_id %>
@@ -57,12 +46,17 @@
               <%= link_to image_tag(answer.user.user_icon.url, class:"rounded-circle", size: "80x80"), user_path(answer.user.id) %>
               <h5 class="question-username"><%= link_to answer.user.username, user_path(answer.user.id), class: "font-monospace", style: "color: black;" %>さんの回答<h5>
             </div>
+            <div class="d-flex flex-row bd-highlight mb-2">
+              <% if user_signed_in? && current_user.id == answer.user_id %>
+                <div class="p-2 bd-highlight"><%= link_to '編集する', edit_question_answer_path(@question, answer), class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;" %></div>
+                <div class="p-2 bd-highlight"><%= link_to '削除する', question_answer_path(@question, answer), method: :delete, class: "btn btn-outline-secondary rounded-pill", style: "text-decoration: none;", data: { confirm: '本当に質問を削除しますか？' } %></div>
+              <% end%>
+            </div>
             <div class="answer-box">
               <div class="answer-content-box">
                 <%= answer.content %>
               </div>
               <div class="border-bottom border-secondary"></div>
-   
             </div>
           </div>
         <% end %>
@@ -72,7 +66,7 @@
             <div class="answer-content-box">
               <h3 style="font-size: 20px; color: gray;">この質問にはまだ回答がついていません。あなたが最初に回答してみませんか？</h3>
             </div>
-            <div class="mb-5">
+            <div class="mb">
               <% if user_signed_in? && current_user.id != @question.user_id %>
                 <%= link_to '回答する', new_question_answer_path(@question.id), class: "btn btn-success btn-lg rounded-pill", style: "text-decoration: none; color: white; width: 200px;", role: "button"%>
               <% end %>
@@ -81,8 +75,8 @@
         </div>
       <% end %>
   </div>
+  <%= render "shared/question_btn" %>
 </div>
 
-<%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"%>
 <%= render "shared/footer" %>
 

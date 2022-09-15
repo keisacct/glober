@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+    <div class='new-question-btn'>
+        <%= link_to new_question_path do %>
+        <i class="fa-solid fa-square-plus" style="width: 120px; height: 120px;"></i>
+        <% end %>
+    </div>
+<% end %>

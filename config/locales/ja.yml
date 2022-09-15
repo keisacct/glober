@@ -66,3 +66,6 @@ ja:
       not_saved:
         one: "以下のエラーで、この%{resource}を保存できません。"
         other: "%{count}個のエラーで、%{resource}を保存できません。"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"

@@ -29,8 +29,5 @@
     </div>
   </div>
 
-    <% if user_signed_in? %>
-      <i class="bi bi-plus-circle-fill"></i>
-      <%= link_to "質問する", new_question_path, class: 'new-question-btn' %>
-    <% end %>
+  <%= render "shared/question_btn" %>
 </div>
