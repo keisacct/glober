@@ -1,13 +1,18 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_question, only: %i[ show edit update destroy ]
+  impressionist :actions=> [:show]
+
 
   # GET /questions or /questions.json
   def index
-    @questions = Question.order(created_at: :desc)
+    @questions = Question.order(created_at: :desc).page(params[:page]).per(12)
   end
 
   # GET /questions/1 or /questions/1.json
   def show
+    @answers = Answer.where(question_id: @question.id)
+    impressionist(@question, nil, unique: [:session_hash])
   end
 
   # GET /questions/new
@@ -52,7 +57,7 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: "Question was successfully destroyed." }
+      format.html { redirect_to questions_url, notice: "質問は完全に削除されました。" }
       format.json { head :no_content }
     end
   end

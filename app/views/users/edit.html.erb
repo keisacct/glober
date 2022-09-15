@@ -1,8 +1,4 @@
-<header class='top-page-header'>
-    <div class="header-container">
-        <%= link_to image_tag('horizontal_on_white_by_logaster.png', class: 'glober-icon'), "/" %>
-    </div>
-</header>
+  <%= render "shared/second_header" %>
 
 <section class="vh-100 " style="background-color: #eee;">
   <div class="container h-100">
@@ -63,7 +59,7 @@
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <ul class="mypage-form-btns">
-                        <li class="mypage-form-btn"><%= f.submit "完了", class:"btn btn-secondary btn-sl" %></li>
+                        <li class="mypage-form-btn"><%= f.submit "更新", class:"btn btn-secondary btn-sl" %></li>
                         <li class="mypage-form-btn"><%= link_to '戻る', @user, class:"btn btn-secondary btn-sl", style:"color: white;" %></li>
                     </ul>
                   </div>

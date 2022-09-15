@@ -1,8 +1,6 @@
-<header class='top-page-header'>
-    <div class="header-container">
-        <%= link_to image_tag('horizontal_on_white_by_logaster.png', class: 'glober-icon'), "/" %>
-    </div>
-</header>
+  <%= render "shared/second_header" %>
+
+
 <div class="mypage-show">
   <div class="mypage-box">
     <div class="profile-box1">
@@ -17,7 +15,7 @@
       <div class="profile-box2">
         <div class="profile-edit-link-box">
           <% if user_signed_in? && current_user.id == @user.id %>
-            <div class="profile-edit-link"><%= link_to 'プロフィールを編集', edit_user_path(current_user.id), class: "btn btn-outline-secondary rounded-pill"%></div>
+            <div class="profile-edit-link"><%= link_to 'プロフィールを編集', edit_user_path(current_user.id), class: "btn btn-success rounded-pill", style: "text-decoration: none; color: white;"%></div>
           <% end %>
         </div>
             <div>
@@ -78,6 +76,8 @@
         <div id="regions_div" style="width: 900px; height: 500px;"></div>
       </div>
     </div>
+    <%= render "shared/question_btn" %>
+
   </div>
 
 

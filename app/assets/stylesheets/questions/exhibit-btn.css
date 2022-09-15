@@ -1,6 +1,5 @@
 .new-question-btn {
     position: fixed;
-    bottom: 10px; 
-    right: 10px;
-    padding: 6px 40px;
+    bottom: 15%; 
+    right: 15%;
   }

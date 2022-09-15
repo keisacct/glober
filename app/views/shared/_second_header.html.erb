@@ -2,12 +2,6 @@
     <div class="header-container">
         <div class='search-bar-contents'>
             <%= link_to image_tag('horizontal_on_white_by_logaster.png', class: 'glober-icon'), "/" %>
-            <form class="search-form" action="#">
-                <input class='input-box' placeholder='キーワードから探す'>
-                <button class='search-button'>
-                    <%= image_tag "search_icon.jpeg", class: "search-icon" %>
-                </button>
-            </form>
         </div>
         <% if user_signed_in? %>
             <div class='btn-group'>
@@ -26,17 +20,4 @@
             </ul>
         <% end %>
     </div>
-    <ul class="nav nav-tabs nav-pills">
-        <li class="nav-item">
-            <%= link_to '新着', questions_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-            <%# <a class="nav-link" href="#"></a> %>
-            <%= link_to 'おすすめの質問', questions_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">マップ</a>
-        </li>
-    </ul>
-
 </header>

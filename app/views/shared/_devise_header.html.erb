@@ -1,0 +1,11 @@
+<header class='top-page-header'>
+    <div class="header-container">
+        <div class='search-bar-contents'>
+            <%= link_to image_tag('horizontal_on_white_by_logaster.png', class: 'glober-icon'), "/" %>
+        </div>
+    </div>
+    <ul class="nav nav-tabs nav-pills">
+        <li class="nav-item"><%= link_to '新規登録', new_user_registration_path, class: "nav-link" %></li>
+        <li class="nav-item"><%= link_to 'ログイン', user_session_path, class: "nav-link" %></li>
+    </ul>
+</header>

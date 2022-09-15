@@ -1,68 +1,188 @@
 ja:
   activerecord:
-    models: #モデル名の日本語化
-      user: "ユーザー"
-    attributes:
-      user: #ユーザーモデルのカラム名日本語化
-        username: "ユーザー名"
-        uid: "ID"
-        user_icon: "プロフィール画像"
-        email: "メールアドレス"
-        password: "パスワード"
-  devise: #deviseに関するエラーメッセージ等の日本語化
-    confirmations:
-      confirmed: "アカウントが正常に確認されました。"
-      send_instructions: "アカウントの確認方法をメールにてお送りします。"
-      send_paranoid_instructions: "すでにメールアドレスが保存されている場合、アカウントの確認方法をメールにてお送りします。"
-    failure:
-      already_authenticated: "ログイン済みです。"
-      inactive: "まだアカウントが有効化されていません。"
-      invalid: "メールアドレスまたはパスワードが違います。ご確認ください。"
-      locked: "このアカウントはロックされています。"
-      last_attempt: "あなたのアカウントがロックされる前に、もう1つの試みを持っています。"
-      not_found_in_database: "メールアドレスまたはパスワードが無効なものです。ご確認ください。"
-      timeout: "一定時間が経過したため、再度ログインが必要です"
-      unauthenticated: "ログインまたは登録が必要です。"
-      unconfirmed: "本登録が必要です。"
-    mailer:
-      confirmation_instructions:
-        subject: "アカウントの登録方法"
-      reset_password_instructions:
-        subject: "パスワードの再設定"
-      unlock_instructions:
-        subject: "アカウントのロック解除"
-    omniauth_callbacks:
-      failure: "%{reason}により、%{kind}から承認されませんでした。"
-      success: "%{kind}から承認されました。"
-    passwords:
-      no_token: "このページにアクセスできません。URLをご確認ください。"
-      send_instructions: "パスワードのリセット方法をメールにてお送りします。"
-      send_paranoid_instructions: "すでにメールアドレスが保存されている場合、パスワードの再設定方法をメールにてお送りします。"
-      updated: "パスワードを変更しました。"
-      updated_not_active: "パスワードを変更しました。"
-    registrations:
-      destroyed: "アカウントを削除しました。またのご利用をお待ちしております。"
-      signed_up: "アカウント登録を受け付けました。"
-      signed_up_but_inactive: "アカウントは登録済みですが、有効化されていないため利用できません。"
-      signed_up_but_locked: "アカウントは登録済みですが、ロックされているため利用できません。"
-      signed_up_but_unconfirmed: "確認メールを登録したメールアドレス宛に送信しました。リンクを開いてアカウントを有効化してください。"
-      update_needs_confirmation: "アカウント情報が更新されました。更新の確認メールを新しいメールアドレス宛に送信しましたので、リンクを開いて更新を有効化してください。"
-      updated: "アカウントが更新されました。"
-    sessions:
-      signed_in: "ログインしました。"
-      signed_out: "ログアウトしました。"
-      Invalid email or password: "メールアドレスまたはパスワードが違います"
-    unlocks:
-      send_instructions: "アカウントのロック解除方法をメールにてお送りします。"
-      send_paranoid_instructions: "アカウントが存在する場合、ロックの解除方法をメールにてお送りします。"
-      unlocked: "アカウントのロックが解除されました。ログインしています。"
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+  date:
+    abbr_day_names:
+    - 日
+    - 月
+    - 火
+    - 水
+    - 木
+    - 金
+    - 土
+    abbr_month_names:
+    - 
+    - 1月
+    - 2月
+    - 3月
+    - 4月
+    - 5月
+    - 6月
+    - 7月
+    - 8月
+    - 9月
+    - 10月
+    - 11月
+    - 12月
+    day_names:
+    - 日曜日
+    - 月曜日
+    - 火曜日
+    - 水曜日
+    - 木曜日
+    - 金曜日
+    - 土曜日
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y年%m月%d日(%a)"
+      short: "%m/%d"
+    month_names:
+    - 
+    - 1月
+    - 2月
+    - 3月
+    - 4月
+    - 5月
+    - 6月
+    - 7月
+    - 8月
+    - 9月
+    - 10月
+    - 11月
+    - 12月
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours: 約%{count}時間
+      about_x_months: 約%{count}ヶ月
+      about_x_years: 約%{count}年
+      almost_x_years: "%{count}年弱"
+      half_a_minute: 30秒前後
+      less_than_x_seconds: "%{count}秒未満"
+      less_than_x_minutes: "%{count}分未満"
+      over_x_years: "%{count}年以上"
+      x_seconds: "%{count}秒"
+      x_minutes: "%{count}分"
+      x_days: "%{count}日"
+      x_months: "%{count}ヶ月"
+      x_years: "%{count}年"
+    prompts:
+      second: 秒
+      minute: 分
+      hour: 時
+      day: 日
+      month: 月
+      year: 年
   errors:
+    format: "%{attribute}%{message}"
     messages:
-      already_confirmed: "は既に登録済みです。ログインしてください"
-      confirmation_period_expired: "%{period}以内に確認する必要がありますので、新しくリクエストしてください。"
-      expired: "有効期限切れです。新規登録してください。"
-      not_found: "は見つかりませんでした。"
-      not_locked: "ロックされていません。"
-      not_saved:
-        one: "以下のエラーで、この%{resource}を保存できません。"
-        other: "%{count}個のエラーで、%{resource}を保存できません。"
+      accepted: を受諾してください
+      blank: を入力してください
+      confirmation: と%{attribute}の入力が一致しません
+      empty: を入力してください
+      equal_to: は%{count}にしてください
+      even: は偶数にしてください
+      exclusion: は予約されています
+      greater_than: は%{count}より大きい値にしてください
+      greater_than_or_equal_to: は%{count}以上の値にしてください
+      inclusion: は一覧にありません
+      invalid: は不正な値です
+      less_than: は%{count}より小さい値にしてください
+      less_than_or_equal_to: は%{count}以下の値にしてください
+      model_invalid: 'バリデーションに失敗しました: %{errors}'
+      not_a_number: は数値で入力してください
+      not_an_integer: は整数で入力してください
+      odd: は奇数にしてください
+      other_than: は%{count}以外の値にしてください
+      present: は入力しないでください
+      required: を入力してください
+      taken: はすでに存在します
+      too_long: は%{count}文字以内で入力してください
+      too_short: は%{count}文字以上で入力してください
+      wrong_length: は%{count}文字で入力してください
+    template:
+      body: 次の項目を確認してください
+      header: "%{model}に%{count}個のエラーが発生しました"
+  helpers:
+    select:
+      prompt: 選択してください
+    submit:
+      create: 登録する
+      submit: 保存する
+      update: 更新する
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%n%u"
+        precision: 0
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: 円
+    format:
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: 十億
+          million: 百万
+          quadrillion: 千兆
+          thousand: 千
+          trillion: 兆
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n%u"
+        units:
+          byte: バイト
+          eb: EB
+          gb: GB
+          kb: KB
+          mb: MB
+          pb: PB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: "、"
+      two_words_connector: "、"
+      words_connector: "、"
+  time:
+    am: 午前
+    formats:
+      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+      long: "%Y/%m/%d %H:%M"
+      short: "%m/%d %H:%M"
+    pm: 午後
+
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
