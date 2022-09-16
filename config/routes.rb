@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   }
 
   root to: "questions#index"
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    resources :maps, only: [:edit, :update]
+  end
 
 end

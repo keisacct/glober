@@ -187,5 +187,5 @@ class Country < ActiveHash::Base
       { id:185, name: 'ロシア' },
     ]
     include ActiveHash::Associations
-    has_many :users
+    has_many :visited_countries
   end

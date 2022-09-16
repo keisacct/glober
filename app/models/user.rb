@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :sns_credentials, dependent: :destroy
   has_many :questions
   has_many :answers
+  has_many :visited_countries, dependent: :destroy
 
   mount_uploader :user_icon, ImageUploader
 
