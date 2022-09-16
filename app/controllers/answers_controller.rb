@@ -69,7 +69,7 @@ class AnswersController < ApplicationController
     def move_to_question_page
       set_question
       set_answer
-      if current_user.id != @answer.user.id
+      if current_user.id != @answer.user.id || @question.best_answer_id.present?
         redirect_to question_path(@question)
       end
     end

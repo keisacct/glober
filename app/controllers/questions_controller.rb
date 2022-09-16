@@ -12,6 +12,9 @@ class QuestionsController < ApplicationController
   # GET /questions/1 or /questions/1.json
   def show
     @answers = Answer.where(question_id: @question.id)
+    if @question.best_answer_id.present?
+      @best_answer = Answer.where(question_id: @question.id).find_by(id: @question.best_answer_id)
+    end
     impressionist(@question, nil, unique: [:session_hash])
   end
 
@@ -43,7 +46,7 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to question_url(@question), notice: "質問が編集されました。" }
+        format.html { redirect_to question_url(@question), notice: "完了しました。" }
         format.json { render :show, status: :ok, location: @question }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -70,6 +73,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:title, :content).merge(user_id: current_user.id)
+      params.require(:question).permit(:title, :content, :best_answer_id).merge(user_id: current_user.id)
     end
 end

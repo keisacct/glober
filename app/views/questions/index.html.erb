@@ -19,8 +19,8 @@
           <% if question.answers.present? %>
             <button type="button" class="btn btn-success" style="width: 40%">回答済み</button>
           <% end %>
-          <% if question.answers.present? %>
-            <button type="button" class="btn btn-primary" style="width: 55%">ベストアンサー</button>
+          <% if question.best_answer_id.present? %>
+            <button type="button" class="btn btn-warning" style="width: 55%">ベストアンサー</button>
           <% end %>
             <h3 class="card-text"><%= truncate(question.title, length:40) %></h3>
           </div>
