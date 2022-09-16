@@ -18,6 +18,8 @@
           <div class="card-body">
           <% if question.answers.present? %>
             <button type="button" class="btn btn-success" style="width: 40%">回答済み</button>
+          <% else %>
+            <button type="button" class="btn btn-info" style="width: 40%;">回答受付中</button>
           <% end %>
           <% if question.best_answer_id.present? %>
             <button type="button" class="btn btn-warning" style="width: 55%">ベストアンサー</button>
