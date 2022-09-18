@@ -3,3 +3,10 @@
     justify-content: space-between;
     width: 50%;
 }
+
+.back-btn-box {
+    /* border: 1px solid; */
+    margin: 50px;
+    display: flex;
+    justify-content: flex-end;
+}

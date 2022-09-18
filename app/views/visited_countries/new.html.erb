@@ -1,0 +1,6 @@
+<%= render 'shared/second_header' %>
+
+<%= form_with model: @visited_country, url: user_visited_countries_path, local: true do |f| %>
+    <%= f.collection_select(:country_id, Country.all, :id, :name, {}) %>
+    <%= f.submit "完了" %>
+<% end %>
