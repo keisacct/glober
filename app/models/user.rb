@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :answers
   has_many :visited_countries, dependent: :destroy
 
+  acts_as_taggable
+  acts_as_taggable_on :visited_countries
+
   mount_uploader :user_icon, ImageUploader
 
   validates :username, presence: true

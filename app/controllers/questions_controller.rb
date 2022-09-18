@@ -1,15 +1,14 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!, except: %i[ index show ]
+  before_action :authenticate_user!, except: %i[ index ]
   before_action :set_question, only: %i[ show edit update destroy ]
-  impressionist :actions=> [:show]
+  impressionist :actions=> [:index, :show]
 
 
-  # GET /questions or /questions.json
   def index
-    @questions = Question.order(created_at: :desc).page(params[:page]).per(12)
+    @questions = Question.order(created_at: :desc)
+    # .page(params[:page]).per(10)
   end
 
-  # GET /questions/1 or /questions/1.json
   def show
     @answers = Answer.where(question_id: @question.id)
     if @question.best_answer_id.present?
@@ -18,16 +17,13 @@ class QuestionsController < ApplicationController
     impressionist(@question, nil, unique: [:session_hash])
   end
 
-  # GET /questions/new
   def new
     @question = Question.new
   end
 
-  # GET /questions/1/edit
   def edit
   end
 
-  # POST /questions or /questions.json
   def create
     @question = Question.new(question_params)
 
@@ -42,7 +38,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /questions/1 or /questions/1.json
   def update
     respond_to do |format|
       if @question.update(question_params)
@@ -55,7 +50,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # DELETE /questions/1 or /questions/1.json
   def destroy
     @question.destroy
 
@@ -66,12 +60,10 @@ class QuestionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def question_params
       params.require(:question).permit(:title, :content, :best_answer_id).merge(user_id: current_user.id)
     end

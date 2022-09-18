@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MapsControllerTest < ActionDispatch::IntegrationTest
+class VisitedCountriesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

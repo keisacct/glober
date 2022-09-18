@@ -40,4 +40,36 @@
       .fa-link{color: #eef1f2;}
     }
   }
+
+  .sns-question-links {
+    list-style: none;
+    .sns-existed-link {
+      font-size: 15px;
+      display: inline-block;
+      margin-right: 5px;
+      // text-align: center;
+      /*Twitter*/
+      .fa-twitter{color: #1DA1F2;}
+      /*Facebook*/
+      .fa-facebook{color: #4267B2;}
+      /*LinkedIn*/
+      .fa-linkedin{color: #0077b5;}
+      /*Blog*/
+      .fa-blog{color: #85a1d7;}
+    }
+    .sns-nil-link {
+      font-size: 15px;
+      display: inline-block;
+      margin-right: 5px;
+      // text-align: center;
+      /*Twitter*/
+      .fa-twitter{color:#eef1f2;}
+      /*Facebook*/
+      .fa-facebook{color:#eef1f2;}
+      /*LinkedIn*/
+      .fa-linkedin{color:#eef1f2;}
+      /*Blog*/
+      .fa-link{color: #eef1f2;}
+    }
+  }
   

@@ -72,8 +72,11 @@
         <span><%= @user.introduction %></span>
       </div>
         <div class="profile-edit-link-box">
-          <% if user_signed_in? && current_user.id == @user.id %>
-            <div class="profile-edit-link"><%= link_to 'マップを編集', edit_user_map_path(current_user.id), class: "btn btn-success rounded-pill", style: "text-decoration: none; color: white;"%></div>
+          <% if user_signed_in? && current_user.id == @user.id && current_user.visited_countries.present? %>
+            <div class="profile-edit-link"><%= link_to 'マップを編集', edit_user_visited_country_path(current_user.id, current_user.visited_countries), class: "btn btn-success rounded-pill", style: "text-decoration: none; color: white;"%></div>
+          <% end %>
+          <% if user_signed_in? && current_user.id == @user.id && current_user.visited_countries.blank? %>
+            <div class="profile-edit-link"><%= link_to 'マップを作成', new_user_visited_country_path(current_user.id), class: "btn btn-success rounded-pill", style: "text-decoration: none; color: white;"%></div>
           <% end %>
         </div>
       <div class="map-chart">

@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   
   def show
+    @visited_countries = VisitedCountry.all
+    @visited_country_tags = VisitedCountry.tag_counts_on(:visited_country_tags).all
   end
 
   def edit

@@ -75,3 +75,6 @@ gem 'bootstrap'
 gem 'impressionist'
 
 gem 'kaminari'
+
+gem 'acts-as-taggable-on', '~> 6.0'
+

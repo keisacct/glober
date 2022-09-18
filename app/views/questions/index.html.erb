@@ -5,36 +5,117 @@
   <p id="notice"><%= notice %></p>
   </div>
 
-  <div class="container">
-    <div class="question-title">
-      <h2>すべての質問（新着順）</h2>
-    </div>
-    <div class="card-deck">
+  <div class="page-container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item text-center bg-light ml- mr-1" style="width:15%;">
+          <%= link_to '新着', questions_path, class:"nav-link link-text font-weight-bold", data_toggle: "tab", role: "tab", aria_selected:"true" %>
+          <%# <a class="nav-link link-text font-weight-bold" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="true">フォロー</a> %>
+      </li>
+      <li class="nav-item text-center bg-light ml- mr-1" style="width:15%;">
+          <%= link_to '解決済み', questions_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item text-center bg-light ml- mr-1" style="width:15%;">
+          <a class="nav-link" href="#">マップ</a>
+      </li>
+    </ul>
+    <div class="questions-index">
       <% @questions.each do |question| %>
-        <div class="card mb-3 mb-5" style="width: 25rem; height: 32rem;">
-          <div class="card-header" style="height: 70px; background-color: gray;">
-            <%= link_to image_tag(question.user.user_icon.url, class:"rounded-circle border border-3", size: "70x70"), question, class: "stretched-link", style:"color: black; text-decoration: none;" %>
+        <%# <% unless question.answers.any? %> 
+        <div class="each-question-box mt-3 mb-3 pt-2 w-100 d-flex border rounded">
+          <div class="col-2 col-md-2 col-sm-2 text-center pt-2">
+            <% if question.answers.empty? %>
+              <p class="btn-info font-weight-bold w-100 mx-auto d-flex justify-content-center align-items-center" style="height: 30px;">受付中</p>
+            <% else %>
+              <p class="btn-danger font-weight-bold w-100 mx-auto d-flex justify-content-center align-items-center" style="height: 30px;">回答済み</p>
+            <% end %>
+            <% if question.best_answer_id.present? %>
+              <p class="btn-warning font-weight-bold w-100 mx-auto d-flex justify-content-center align-items-center" style="height: 30px;">ベストアンサー</p>
+            <% end %>
+            <div class="border rounded d-flex justify-content-center align-items-center" style="height: 5vh;">
+              <h3>
+                <i class="fas fa-comment-dots"></i>
+                <span><%= question.answers.count %></span>
+              </h3>
+            </div>
           </div>
-          <div class="card-body">
-          <% if question.answers.present? %>
-            <button type="button" class="btn btn-success" style="width: 40%">回答済み</button>
-          <% else %>
-            <button type="button" class="btn btn-info" style="width: 40%;">回答受付中</button>
-          <% end %>
-          <% if question.best_answer_id.present? %>
-            <button type="button" class="btn btn-warning" style="width: 55%">ベストアンサー</button>
-          <% end %>
-            <h3 class="card-text"><%= truncate(question.title, length:40) %></h3>
+          <div class="row col-md-10">
+            <div class="row pt-2">
+              <div class="d-flex justify-content-between align-items-center">
+                <%= link_to question_path(question), class:"link-text", 'data-turbolinks': false do %>
+                  <h2 style="font-weight: bold"><%= truncate(question.title, length:30) %></h2>
+                <% end %>
+                <span class="created-at-box">
+                  <%= l question.created_at %>
+                </span>
+              </div>
+              <div class="d-flex justify-content-between align-items-end" style="height: 6vh;">
+                <div class="d-flex justify-content-around align-items-center" style="width: 100px">
+                  <h4><i class="fas fa-thumbs-up" style="margin-right: 5px;"></i>5</h4>
+                  <h4><i class="fas fa-eye" style="margin-right: 5px;"></i><%= question.impressionist_count(:filter=>:session_hash) %></h4>       
+                </div>
+                <div class="d-flex justify-content-center align-items-center">
+                  <%= link_to user_path(question.user_id), class: "d-flex align-items-center", style: "height: 3vh; margin-right: 15px;", 'data-turbolinks': false do %>
+                    <div class="d-flex justify-content-center align-items-center">
+                      <%= image_tag question.user.user_icon.url, class:"rounded-circle border border-3", size: "40x40" %>
+                      <h4 style="margin-left: 5px; color: black;"><%= question.user.username %></h4>
+                    </div>
+                  <% end %>
+                  <div class="sns-question-links">
+                    <% if question.user.twitter_url.present? %>
+                      <div class="sns-existed-link">
+                        <%= link_to question.user.twitter_url, target: :_blank do %>
+                          <i class="fa-brands fa-twitter"></i>
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <div class="sns-nil-link">
+                        <i class="fa-brands fa-twitter"></i>
+                      </div>
+                    <% end %>
+                    <% if question.user.linkedin_url.present? %>
+                      <div class="sns-existed-link">
+                        <%= link_to question.user.linkedin_url, target: :_blank do %>
+                          <i class="fa-brands fa-linkedin"></i>
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <div class="sns-nil-link">
+                        <i class="fa-brands fa-linkedin "></i>
+                      </div>
+                    <% end %>
+                    <% if question.user.facebook_url.present? %>
+                      <div class="sns-existed-link">
+                        <%= link_to question.user.facebook_url, target: :_blank do %>
+                          <i class="fa-brands fa-facebook"></i>
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <div class="sns-nil-link">
+                        <i class="fa-brands fa-facebook"></i>
+                      </div>
+                    <% end %>
+                    <% if question.user.blog_url.present? %>
+                      <div class="sns-existed-link">
+                        <%= link_to question.user.blog_url, target: :_blank do %>
+                          <i class="fa-solid fa-blog"></i>
+                        <% end %>
+                      </div>
+                    <% else %>
+                      <div class="sns-nil-link">
+                        <i class="fa-solid fa-blog"></i>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-footer" style="background-color: white;">          
-            <div><%= question.user.username %></div>
-          </div>
+          
         </div>
+        <%# <% end %> 
       <% end %>
     </div>
-    <div class="d-flex justify-content-center">
-      <%= paginate @questions %>
-    </div>
+    <%# <%= paginate @questions %> 
   </div>
 
   <%= render "shared/question_btn" %>
